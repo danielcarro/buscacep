@@ -13,12 +13,6 @@ const Page: React.FC = () => {
   const [cepSan, setCepSan] = useState<string>('');
   const [endereco, setEndereco] = useState<Endereco | null>(null);
 
-  const sanitizeCep = (cep: string) => {
-    const sanitizedCep = cep.replace(/ /g, '').replace(/-/g, '');
-    return sanitizedCep;
-  };
-
-
   useEffect(() => {
     setCepSan(sanitizeCep(cep));
   }, [cep]);
@@ -29,6 +23,10 @@ const Page: React.FC = () => {
     }
   }, [cepSan]);
 
+  const sanitizeCep = (cep: string) => {
+    const sanitizedCep = cep.replace(/ /g, '').replace(/-/g, '');
+    return sanitizedCep;
+  };
 
   const buscarEndereco = async () => {
     try {
@@ -47,7 +45,7 @@ const Page: React.FC = () => {
   return (
     <div>
       <form >
-        <input type="text" value={cep} onChange={handleCepChange} placeholder="Digite o CEP" />       
+        <input type="text" value={cep} onChange={handleCepChange} placeholder="Digite o CEP" />
       </form>
       {endereco && (
         <div>
