@@ -8,13 +8,10 @@ interface Endereco {
   uf: string;
 }
 
-
-
 const Page: React.FC = () => {
   const [cep, setCep] = useState<string>('');
   const [cepSan, setCepSan] = useState<string>('');
   const [endereco, setEndereco] = useState<Endereco | null>(null);
-
 
   const sanitizeCep = (cep: string) => {
     const sanitizedCep = cep.replace(/ /g, '').replace(/-/g, '');
@@ -47,13 +44,10 @@ const Page: React.FC = () => {
     setCep(event.target.value);
   };
 
-
-
   return (
     <div>
       <form >
-        <input type="text" value={cep} onChange={handleCepChange} placeholder="Digite o CEP" />
-       
+        <input type="text" value={cep} onChange={handleCepChange} placeholder="Digite o CEP" />       
       </form>
       {endereco && (
         <div>
